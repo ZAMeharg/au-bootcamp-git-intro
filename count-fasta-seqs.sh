@@ -1,5 +1,21 @@
 #!/bin/sh
 
+#Take 1 for getting this program to work
+sum=0
+for var in "$@"
+do
+	read_count=`grep -c ">" $var`
+	sum=`expr $sum + $read_count`
+	name=$(basename "$var")
+	echo "$read_count" "$name"  
+done
+
+echo "$sum"
+
+
+
+
+
 # How this script should behave:
 #
 # INPUT:   Paths to one or more fasta sequence files
@@ -63,7 +79,7 @@
 # files that were 'given to' this script. The variable "$@" will be very useful
 # for this. Let's take a look at what it gives us:
 
-echo "$@"
+#echo "$@"
 
 # How are you going to work with each file path?
 # HINT: for loop (remember "for do done"?)
